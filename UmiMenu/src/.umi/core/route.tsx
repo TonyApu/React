@@ -4,12 +4,12 @@
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"1":{"path":"","name":"Menu","parentId":"2","id":"1","originPath":"/products"},"2":{"path":"/products","isWrapper":true,"parentId":"@@/global-layout","id":"2"},"3":{"path":"/login","parentId":"@@/global-layout","id":"3"},"@@/global-layout":{"id":"@@/global-layout","path":"/","isLayout":true}} as const;
+  const routes = {"1":{"path":"/","name":"Trang Chủ","parentId":"@@/global-layout","id":"1"},"2":{"path":"/products","name":"Menu","parentId":"@@/global-layout","id":"2"},"3":{"path":"/login","name":"Đăng nhập","parentId":"@@/global-layout","id":"3"},"@@/global-layout":{"id":"@@/global-layout","path":"/","isLayout":true}} as const;
   return {
     routes,
     routeComponents: {
-'1': React.lazy(() => import(/* webpackChunkName: "p__products__index" */'@/pages/products/index.tsx')),
-'2': React.lazy(() => import(/* webpackChunkName: "wrappers__auth" */'@/wrappers/auth.js')),
+'1': React.lazy(() => import(/* webpackChunkName: "p__home__index" */'@/pages/home/index.tsx')),
+'2': React.lazy(() => import(/* webpackChunkName: "p__products__index" */'@/pages/products/index.tsx')),
 '3': React.lazy(() => import(/* webpackChunkName: "p__login__index" */'@/pages/login/index.tsx')),
 '@@/global-layout': React.lazy(() => import(/* webpackChunkName: "layouts__index" */'/Users/tony/Documents/MyApp/UmiMenu/src/layouts/index.tsx')),
 },
