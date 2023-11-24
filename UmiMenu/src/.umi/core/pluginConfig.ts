@@ -276,9 +276,80 @@ interface IConfigTypes {
     run: {
     globals?: (Array<string> | undefined);
 };
+    access: { [x: string]: any };
+    analytics: {
+    baidu?: (string | undefined);
+    ga?: (string | undefined);
+    ga_v2?: (string | undefined);
+};
+    antd: {
+    configProvider?: ({ [x: string]: any } | undefined);
+    dark?: (boolean | undefined);
+    compact?: (boolean | undefined);
+    import?: (boolean | undefined);
+    style?: ("less" | "css" | undefined);
+    theme?: ({ [x: string]: any } | undefined);
+    appConfig?: ({ [x: string]: any } | undefined);
+    momentPicker?: (boolean | undefined);
+    styleProvider?: ({ [x: string]: any } | undefined);
+};
+    dva: {
+    extraModels?: (Array<string> | undefined);
+    immer?: ({ [x: string]: any } | undefined);
+    skipModelValidate?: (boolean | undefined);
+};
+    initialState: {
+    loading?: (string | undefined);
+};
+    layout: { [x: string]: any };
+    locale: {
+    default?: (string | undefined);
+    useLocalStorage?: (boolean | undefined);
+    baseNavigator?: (boolean | undefined);
+    title?: (boolean | undefined);
+    antd?: (boolean | undefined);
+    baseSeparator?: (string | undefined);
+};
+    mf: {
+    name?: (string | undefined);
+    remotes?: (Array<{
+    aliasName?: (string | undefined);
+    name: string;
+    entry?: (string | undefined);
+    entries?: ({
+
+} | undefined);
+    keyResolver?: (string | undefined);
+}> | undefined);
+    shared?: ({ [x: string]: any } | undefined);
+    library?: ({ [x: string]: any } | undefined);
+    remoteHash?: (boolean | undefined);
+};
+    model: {
+    extraModels?: (Array<string> | undefined);
+};
+    moment2dayjs: {
+    preset?: ("antd" | "antdv3" | "none" | undefined);
+    plugins?: (Array<string> | undefined);
+};
+    qiankun: {
+    slave?: ({ [x: string]: any } | undefined);
+    master?: ({ [x: string]: any } | undefined);
+    externalQiankun?: (boolean | undefined);
+};
     reactQuery: {
     devtool?: ({ [x: string]: any } | boolean | undefined);
     queryClient?: ({ [x: string]: any } | boolean | undefined);
+};
+    request: {
+    dataField?: (string | undefined);
+};
+    styledComponents: {
+    babelPlugin?: ({ [x: string]: any } | undefined);
+};
+    tailwindcss: { [x: string]: any };
+    valtio: {
+
 };
 };
 

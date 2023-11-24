@@ -1,13 +1,18 @@
-import doremon from '../../assets/doremon.png';
-import style from './style.home.scss'
+import Guide from '@/components/Guide';
+import { trim } from '@/utils/format';
+import { PageContainer } from '@ant-design/pro-components';
+import { useModel } from '@umijs/max';
+import styles from './index.less';
 
-export default function HomePage() {
+const HomePage: React.FC = () => {
+  const { name } = useModel('global');
   return (
-    <div className={style.container}>
-      <div className={style.displayName}>Nhà Hàng Doraemon</div>
-      <p>
-        <img src={doremon} width="600" height="400"/>
-      </p>
-    </div>
+    <PageContainer ghost>
+      <div className={styles.container}>
+        <Guide name={trim(name)} />
+      </div>
+    </PageContainer>
   );
-}
+};
+
+export default HomePage;

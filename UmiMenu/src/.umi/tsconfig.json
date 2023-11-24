@@ -26,10 +26,10 @@
       "@@/*": [
         "src/.umi/*"
       ],
-      "umi": [
-        "/Users/tony/Documents/MyApp/UmiMenu/node_modules/umi"
+      "@umijs/max": [
+        "/Users/tony/Documents/MyApp/umi-dva/node_modules/umi"
       ],
-      "umi/typings": [
+      "@umijs/max/typings": [
         "src/.umi/typings"
       ]
     }
