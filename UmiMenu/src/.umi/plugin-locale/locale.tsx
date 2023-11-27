@@ -5,17 +5,17 @@ import React from 'react';
 import { ConfigProvider } from 'antd';
 
 import moment from '/Users/tony/Documents/MyApp/umi-dva/node_modules/moment';
-import '/Users/tony/Documents/MyApp/umi-dva/node_modules/moment/locale/vi';
+import '/Users/tony/Documents/MyApp/umi-dva/node_modules/moment/locale/zh-cn';
 import { RawIntlProvider, getLocale, getDirection , setIntl, getIntl, localeInfo, event, LANG_CHANGE_EVENT } from './localeExports';
 
-import antd_es_locale_vi_VN from 'antd/es/locale/vi_VN';
+import antd_es_locale_zh_CN from 'antd/es/locale/zh_CN';
 
 
 
 export function _onCreate() {
   const locale = getLocale();
   if (moment?.locale) {
-    moment.locale(localeInfo[locale]?.momentLocale || 'vi');
+    moment.locale(localeInfo[locale]?.momentLocale || 'zh-cn');
   }
   setIntl(locale);
 }
@@ -48,7 +48,7 @@ export const _LocaleContainer = (props:any) => {
   }, []);
 
   const defaultAntdLocale = {
-    ...antd_es_locale_vi_VN,
+    ...antd_es_locale_zh_CN,
   }
   const direction = getDirection();
 

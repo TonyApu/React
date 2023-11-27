@@ -137,13 +137,13 @@ export const getIntl = (locale?: string, changeIntl?: boolean) => {
     return _createIntl(locale);
   }
   // 使用 zh-CN
-  if (localeInfo["vi-VN"]) {
-    return _createIntl("vi-VN");
+  if (localeInfo["zh-CN"]) {
+    return _createIntl("zh-CN");
   }
 
   // 如果还没有，返回一个空的
   return createIntl({
-    locale: "vi-VN",
+    locale: "zh-CN",
     messages: {}
   });
 };
@@ -179,7 +179,7 @@ export const getLocale = () => {
   browserLang = isNavigatorLanguageValid
     ? navigator.language.split('-').join('-')
     : '';
-  return lang || browserLang || "vi-VN";
+  return lang || browserLang || "zh-CN";
 };
 
 

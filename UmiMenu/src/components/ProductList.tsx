@@ -1,24 +1,71 @@
-import { Table, Popconfirm, Button } from 'antd';
+import { Table } from 'antd';
+import moment from 'moment';
+import { useState } from 'react';
+import ProductModal, { Product } from './ProductModal';
 
-const ProductList = ({ onDelete, products }) => {
-  const columns = [{
-    title: 'Name',
-    dataIndex: 'name',
-  }, {
-    title: 'Actions',
-    render: (text, record) => {
-      return (
-        <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
-    <Button>Delete</Button>
-      </Popconfirm>
-    );
+const ProductList = ({ dispatch, products }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [product, setProduct] = useState<Product>({
+    id: '',
+    name: '',
+    price: 0,
+    withSauce: false,
+    quantity: 0,
+    expiredDate: new Date(),
+    src: '',
+  });
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const columns = [
+    {
+      title: 'Tên món',
+      dataIndex: 'name',
     },
-  }];
+    {
+      title: 'Giá',
+      dataIndex: 'price',
+    },
+    {
+      title: 'Số lượng',
+      dataIndex: 'quantity',
+    },
+    {
+      title: 'HSD',
+      dataIndex: 'expiredDate',
+      render(text, record) {
+        return <div>{moment(text).format('DD/MM/YYYY')}</div>;
+      },
+    },
+  ];
+
   return (
-    <Table
-      dataSource={products}
-      columns={columns}
-    />
+    <>
+      <Table
+        rowKey="id"
+        dataSource={products}
+        columns={columns}
+        onRow={(record) => ({
+          onClick: () => {
+            setProduct(record);
+            setIsModalOpen(true);
+          },
+        })}
+      />
+      <ProductModal
+        dispatch={dispatch}
+        products={product}
+        isModalOpen={isModalOpen}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+      />
+    </>
   );
 };
 

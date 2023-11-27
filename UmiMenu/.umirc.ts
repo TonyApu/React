@@ -5,6 +5,18 @@ export default defineConfig({
   antd: {},
   request: {},
   initialState: {},
+  routes: [
+    {
+      path: '/',
+      redirect: '/home',
+    },
+    {
+      name: 'Trang Chủ',
+      path: '/home',
+      component: './Home',
+    },
+    { path: '/products', component: './Products', name: 'Menu' },
+  ],
   mock: {
     include: ['src/pages/**/_mock.ts'],
   },
@@ -17,7 +29,7 @@ export default defineConfig({
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     // default zh-CN
-    default: 'vi-VN',
+    default: 'zh-CN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,

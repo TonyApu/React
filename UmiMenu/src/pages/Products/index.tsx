@@ -2,16 +2,15 @@ import ProductList from '@/components/ProductList';
 import { connect } from 'dva';
 
 const Products = ({ dispatch, products }) => {
-  function handleDelete(id) {
-    dispatch({
-      type: 'products/delete',
-      payload: id,
-    });
-  }
+  console.log('product: ', products)
+  dispatch({
+    type: 'products/fetch',
+  });
+
   return (
     <div>
       <h2>List of Products</h2>
-      <ProductList onDelete={handleDelete} products={products} />
+      <ProductList dispatch={dispatch} products={products} />
     </div>
   );
 };
