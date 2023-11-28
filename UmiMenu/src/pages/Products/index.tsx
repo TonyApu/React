@@ -1,11 +1,15 @@
 import ProductList from '@/components/ProductList';
 import { connect } from 'dva';
+import { useEffect } from 'react';
 
 const Products = ({ dispatch, products }) => {
-  console.log('product: ', products)
-  dispatch({
-    type: 'products/fetch',
-  });
+  console.log('render', products);
+   useEffect(() => {
+    dispatch({
+      type: 'products/fetch',
+    });
+  },[]) 
+ 
 
   return (
     <div>

@@ -62,7 +62,6 @@ const ProductModal: React.FC<{
     
   const [form] = Form.useForm();
   const { TextArea } = Input;
-//   const queryClient = useQueryClient();
   const [withSauce, setWithSauce] = useState(false);
 
   useUpdateEffect(() => {
@@ -75,7 +74,7 @@ const ProductModal: React.FC<{
 
   const handleDeleteMenu = () => {
     dispatch({
-      type: 'products/delete',
+      type: 'products/deleteItem',
       payload: products.id,
     });
     handleOk();

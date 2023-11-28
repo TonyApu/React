@@ -11,11 +11,21 @@ export default defineConfig({
       redirect: '/home',
     },
     {
+      name: 'Đăng Nhập',
+      path: '/login',
+      component: './Login',
+    },
+    {
       name: 'Trang Chủ',
       path: '/home',
       component: './Home',
     },
-    { path: '/products', component: './Products', name: 'Menu' },
+    {
+      path: '/products',
+      component: './Products',
+      name: 'Menu',
+      wrappers: ['@/wrappers/auth'],
+    },
   ],
   mock: {
     include: ['src/pages/**/_mock.ts'],
@@ -29,7 +39,6 @@ export default defineConfig({
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     // default zh-CN
-    default: 'zh-CN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,
