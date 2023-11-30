@@ -4,6 +4,7 @@
 import React from 'react';
 import {
   ConfigProvider,
+  theme,
 } from 'antd';
 import { ApplyPluginsType } from 'umi';
 import { getPluginManager } from '../core/plugin';
@@ -30,6 +31,19 @@ export function rootContainer(rawContainer) {
   let container = rawContainer;
 
 
+  // Add token algorithm for antd5 only
+  container = (
+    <ConfigProvider
+      theme={({
+        algorithm: [
+          theme.compactAlgorithm,
+          theme.darkAlgorithm,
+        ],
+      })}
+    >
+      {container}
+    </ConfigProvider>
+  );
 
 
   return container;

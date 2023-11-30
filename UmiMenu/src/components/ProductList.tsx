@@ -3,7 +3,11 @@ import moment from 'moment';
 import { useState } from 'react';
 import ProductModal, { Product } from './ProductModal';
 
-const ProductList = ({ dispatch, products }) => {
+const ProductList: React.FC<{
+  products: Product;
+  dispatch: any;
+  reloadState: ()=> void;
+}> = ({ dispatch, products, reloadState }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [product, setProduct] = useState<Product>({
     id: '',
@@ -64,6 +68,7 @@ const ProductList = ({ dispatch, products }) => {
         isModalOpen={isModalOpen}
         handleOk={handleOk}
         handleCancel={handleCancel}
+        reloadState={reloadState}
       />
     </>
   );

@@ -1,24 +1,31 @@
 import ProductList from '@/components/ProductList';
 import { connect } from 'dva';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { createStructuredSelector } from 'reselect';
+import { selectorProducts } from './selector';
 
-const Products = ({ dispatch, products }) => {
-  console.log('render', products);
-   useEffect(() => {
-    dispatch({
+const Products = (props) => {
+  const [flag, setFlag] = useState<boolean>(false);
+  useEffect(() => {
+    props.dispatch({
       type: 'products/fetch',
     });
-  },[]) 
- 
+  }, [flag]);
+
+  const reloadState = () => {
+    setFlag(!flag)
+  }
 
   return (
     <div>
       <h2>List of Products</h2>
-      <ProductList dispatch={dispatch} products={products} />
+      <ProductList dispatch={props.dispatch} products={props.products} reloadState={reloadState}/>
     </div>
   );
 };
 
-export default connect(({ products }) => ({
-  products,
-}))(Products);
+const mapStateToProps = createStructuredSelector({
+  products: selectorProducts,
+});
+
+export default connect(mapStateToProps)(Products);

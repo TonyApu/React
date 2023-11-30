@@ -20,11 +20,10 @@ export default {
   },
   reducers: {
     save(state, { payload }) {
-      return payload;
+      return {
+        ...state,
+        products: payload
+      };
     },
-
-    // delete(state, { payload: id }) {
-    //   return state.filter((item) => item.id !== id);
-    // },
   },
 };

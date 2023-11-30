@@ -2,7 +2,10 @@ import { defineConfig } from 'umi';
 
 export default defineConfig({
   model: {},
-  antd: {},
+  antd: {
+    dark: true,
+    compact: true,
+  },
   request: {},
   initialState: {},
   routes: [
@@ -11,19 +14,34 @@ export default defineConfig({
       redirect: '/home',
     },
     {
-      name: 'Đăng Nhập',
       path: '/login',
       component: './Login',
     },
+    // {
+    //   path: '/',
+    //   component: '@/layouts/index',
+    //   wrappers: ['@/wrappers/auth'],
+    //   routes: [
+    //     { path: '/home', component: '@/pages/Home/index' },
+    //     { path: '/products', component: '@/pages/Products/index' },
+    //   ],
+    // },
     {
       name: 'Trang Chủ',
       path: '/home',
       component: './Home',
+      wrappers: ['@/wrappers/auth'],
     },
     {
       path: '/products',
       component: './Products',
-      name: 'Menu',
+      name: 'Thực đơn',
+      wrappers: ['@/wrappers/auth'],
+    },
+    {
+      path: '/logout',
+      component: './Logout',
+      name: 'Đăng xuất',
       wrappers: ['@/wrappers/auth'],
     },
   ],

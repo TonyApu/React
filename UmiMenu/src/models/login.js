@@ -1,19 +1,34 @@
 import { accountLogin } from '../services/login'
+import { notification } from 'antd';
+import { history } from 'umi';
+
 export default {
   namespace: 'login',
   state: [],
   effects: {
     *login(payload, { call, put }) {
-      const { status, role } = yield call(accountLogin(payload));
-      if (response.code === 200) {
-
+      const res = accountLogin(payload);
+      if (res.status === 200) {
+        yield put({
+          type: 'changeLoginStatus',
+          payload: res.role,
+        });
+        history.push('/home');
+      } else {
+        notification.error({
+          message: 'Sai tài khoản hoặc mật khẩu',
+        });
       }
+    },
+    logout() {
+      localStorage.removeItem("roles");
+      history.push('/home');
     },
   },
   reducers: {
     changeLoginStatus(state, { payload }) {
-      localStorage.setItem('token', payload.data.token);
-      localStorage.setItem('roles', payload.data.auth);
+      console.log('payload: ', payload);
+      localStorage.setItem('roles', payload);
       return { ...state };
     },
   },

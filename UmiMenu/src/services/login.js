@@ -1,11 +1,11 @@
 export function accountLogin(params) {
-    const {username, password} = params;
-    if (username === 'tony' && params === '1234') {
+    const response = params.payload;
+    if (response.username === 'tony' && response.password === '1234') {
         return {
             status: 200,
             role: 'admin'
         }
-    } else if (username === 'tamnxl' && params === '1234') {
+    } else if (response.username === 'tamnxl' && response.password === '1234') {
         return {
             status: 200,
             role: 'member'

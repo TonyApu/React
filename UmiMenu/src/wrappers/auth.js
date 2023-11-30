@@ -1,10 +1,10 @@
-import { Redirect } from 'umi'
+import { Outlet, Navigate } from 'umi';
 
 export default (props) => {
-  const isLogin = false;
+  const isLogin = localStorage.getItem('roles') !== null;
   if (isLogin) {
-    return <div>{ props.children }</div>;
+    return <Outlet />;
   } else {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
-}
+};

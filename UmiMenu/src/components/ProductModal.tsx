@@ -58,7 +58,8 @@ const ProductModal: React.FC<{
   handleOk: () => void;
   handleCancel: () => void;
   dispatch: any;
-}> = ({ products, handleOk, handleCancel, isModalOpen, dispatch }) => {
+  reloadState: ()=> void;
+}> = ({ products, handleOk, handleCancel, isModalOpen, dispatch, reloadState }) => {
     
   const [form] = Form.useForm();
   const { TextArea } = Input;
@@ -77,6 +78,7 @@ const ProductModal: React.FC<{
       type: 'products/deleteItem',
       payload: products.id,
     });
+    reloadState()
     handleOk();
   }
 

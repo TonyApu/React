@@ -6,6 +6,7 @@ export const dva = {
     },
     initialState: {
       products: [],
+      test: [],
     },
   },
 };
